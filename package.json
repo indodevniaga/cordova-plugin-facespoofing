@@ -1,8 +1,8 @@
 {
-  "name": "cordova-plugin-facerecognition",
+  "name": "cordova-plugin-facespoofing",
   "version": "0.0.1",
   "cordova": {
-    "id": "cordova-plugin-facerecognition",
+    "id": "cordova-plugin-facespoofing",
     "platforms": [
       "android"
     ]

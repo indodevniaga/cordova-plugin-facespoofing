@@ -1,28 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-facerecognition" version="0.0.1"
+<plugin id="cordova-plugin-facespoofing" version="0.0.1"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>FaceRecognition</name>
-    <js-module name="FaceRecognition" src="www/FaceRecognition.js">
-        <clobbers target="facerecognition" />
+    <name>FaceSpoofing</name>
+    <js-module name="FaceSpoofing" src="www/FaceSpoofing.js">
+        <clobbers target="facespoofing" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="FaceRecognition">
-                <param name="android-package" value="cordova.plugin.facerecognition.FaceRecognition" />
+            <feature name="FaceSpoofing">
+                <param name="android-package" value="cordova.plugin.facespoofing.FaceSpoofing" />
             </feature>
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:launchMode="singleTop" android:name="cordova.plugin.facerecognition.FaceRecognitionProcess" />
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:launchMode="singleTop" android:name="cordova.plugin.facerecognition.FaceRecognitionCompare" />
-        </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/FaceRecognition.java" target-dir="src/cordova/plugin/facerecognition" />
-        <source-file src="src/android/FaceRecognitionProcess.java" target-dir="src/cordova/plugin/facerecognition" />
+        <source-file src="src/android/FaceSpoofing.java" target-dir="src/cordova/plugin/facespoofing" />
+        <!-- <source-file src="src/android/FaceRecognitionProcess.java" target-dir="src/cordova/plugin/facerecognition" />
         <source-file src="src/android/FaceRecognitionCompare.java" target-dir="src/cordova/plugin/facerecognition" />
-        <resource-file src="ttvface.aar" target="../../libs/ttvface.aar" />
+        <resource-file src="ttvface.aar" target="../../libs/ttvface.aar" /> -->
          <!-- Instalasi Gradle -->
         <framework
             custom="true"

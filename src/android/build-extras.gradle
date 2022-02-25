@@ -1,3 +1,4 @@
 dependencies {
-    implementation files('libs/ttvface.aar')
+    // Tensor flow
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
 }

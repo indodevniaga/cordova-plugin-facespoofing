@@ -17,13 +17,25 @@ fs.ensureDirSync = function (dir) {
 };
 
  
-var GD_PLUGIN_DIR = "plugins/cordova-plugin-facerecognition";
+var GD_PLUGIN_DIR = "plugins/cordova-plugin-facespoofing";
 
 var PLUGINS = {
     GD: [
          {
-            dest: GD_PLUGIN_DIR + '/ttvface.aar',
-            src: "ttvface.aar"
+            dest: GD_PLUGIN_DIR + '/FaceAntiSpoofing.tflite',
+            src: "FaceAntiSpoofing.tflite"
+         },
+         {
+            dest: GD_PLUGIN_DIR + '/onet.tflite',
+            src: "onet.tflite"
+         },
+         {
+            dest: GD_PLUGIN_DIR + '/pnet.tflite',
+            src: "pnet.tflite"
+         },
+         {
+            dest: GD_PLUGIN_DIR + '/rnet.tflite',
+            src: "rnet.tflite"
          },
     ]
 };
