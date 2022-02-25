@@ -41,7 +41,7 @@ public class FaceSpoofing extends CordovaPlugin {
   }
 
   private void openNewActivityDetect(Context context, int REQUEST_CODE, String message) {
-    Intent intent = new Intent(context, FaceRecognitionProcess.class);
+    Intent intent = new Intent(context, FaceSpoofingProcess.class);
     intent.putExtra("image", message);
     cordova.startActivityForResult(this, intent, REQUEST_CODE);
   }

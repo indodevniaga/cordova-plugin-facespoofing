@@ -12,17 +12,27 @@
                 <param name="android-package" value="cordova.plugin.facespoofing.FaceSpoofing" />
             </feature>
         </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:launchMode="singleTop" android:name="cordova.plugin.facespoofing.FaceSpoofingProcess" />
+        </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/FaceSpoofing.java" target-dir="src/cordova/plugin/facespoofing" />
-        <!-- <source-file src="src/android/FaceRecognitionProcess.java" target-dir="src/cordova/plugin/facerecognition" />
-        <source-file src="src/android/FaceRecognitionCompare.java" target-dir="src/cordova/plugin/facerecognition" />
-        <resource-file src="ttvface.aar" target="../../libs/ttvface.aar" /> -->
+        <source-file src="src/android/FaceSpoofingProcess.java" target-dir="src/cordova/plugin/facespoofing" />
+        <source-file src="src/android/FaceAntiSpoofing.java" target-dir="src/cordova/plugin/facespoofing" />
+        <source-file src="src/android/MyUtil.java" target-dir="src/cordova/plugin/facespoofing" />
+        <source-file src="src/android/mtcnn/Align.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
+        <source-file src="src/android/mtcnn/Box.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
+        <source-file src="src/android/mtcnn/MTCNN.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
+        <source-file src="src/android/mtcnn/Utils.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
+        <resource-file src="FaceAntiSpoofing.tflite" target="assets/FaceAntiSpoofing.tflite" />
+        <resource-file src="onet.tflite" target="assets/onet.tflite" />
+        <resource-file src="pnet.tflite" target="assets/pnet.tflite" />
+        <resource-file src="rnet.tflite" target="assets/rnet.tflite" />
          <!-- Instalasi Gradle -->
         <framework
             custom="true"
             src="src/android/build-extras.gradle"
             type="gradleReference" />
-        <hook src="scripts/process_copy_android_sdk.js" type="before_plugin_install" />
         <hook type="after_prepare" src="scripts/apply-to-gradle.properties.js" />
     </platform>
 </plugin>
