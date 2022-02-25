@@ -24,10 +24,10 @@
         <source-file src="src/android/mtcnn/Box.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
         <source-file src="src/android/mtcnn/MTCNN.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
         <source-file src="src/android/mtcnn/Utils.java" target-dir="src/cordova/plugin/facespoofing/mtcnn" />
-        <resource-file src="FaceAntiSpoofing.tflite" target="assets/FaceAntiSpoofing.tflite" />
-        <resource-file src="onet.tflite" target="assets/onet.tflite" />
-        <resource-file src="pnet.tflite" target="assets/pnet.tflite" />
-        <resource-file src="rnet.tflite" target="assets/rnet.tflite" />
+        <resource-file src="files/FaceAntiSpoofing.tflite" target="assets/FaceAntiSpoofing.tflite" />
+        <resource-file src="files/onet.tflite" target="assets/onet.tflite" />
+        <resource-file src="files/pnet.tflite" target="assets/pnet.tflite" />
+        <resource-file src="files/rnet.tflite" target="assets/rnet.tflite" />
          <!-- Instalasi Gradle -->
         <framework
             custom="true"
