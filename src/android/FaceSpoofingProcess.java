@@ -22,7 +22,7 @@ public class FaceSpoofingProcess extends Activity {
 
   private FaceAntiSpoofing fas;
   private MTCNN mtcnn;
-  private String liveness;
+  private Boolean liveness = false;
   private Boolean error = false;
   private String message;
   private String score;
