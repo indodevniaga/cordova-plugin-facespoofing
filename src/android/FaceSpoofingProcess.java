@@ -87,19 +87,19 @@ public class FaceSpoofingProcess extends Activity {
       this.error = false;
       this.score = "" + laplace2;
       this.threshold = "" + FaceAntiSpoofing.LAPLACIAN_THRESHOLD;
-      this.liveness = "False";
+      this.liveness = false;
     } else {
       float score2 = fas.antiSpoofing(bitmapCrop1);
       if (score2 < FaceAntiSpoofing.THRESHOLD) {
         this.error = false;
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
-        this.liveness = "True";
+        this.liveness = true;
       } else {
         this.error = false;
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
-        this.liveness = "False";
+        this.liveness = false;
       }
     }
 
