@@ -14,7 +14,7 @@ public class FaceAntiSpoofing {
     private static final String MODEL_FILE = "FaceAntiSpoofing.tflite";
 
     public static final int INPUT_IMAGE_SIZE = 256; // 需要feed数据的placeholder的图片宽高
-    public static final float THRESHOLD = 0.3f; // 设置一个阙值，大于这个值认为是攻击
+    public static final float THRESHOLD = 0.5f; // 设置一个阙值，大于这个值认为是攻击
 
     public static final int ROUTE_INDEX = 6; // 训练时观察到的路由索引
 

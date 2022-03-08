@@ -25,6 +25,8 @@ public class FaceSpoofingProcess extends Activity {
   private String liveness;
   private Boolean error = false;
   private String message;
+  private String score;
+  private String threshold;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,14 @@ public class FaceSpoofingProcess extends Activity {
     Box box1 = boxes1.get(0);
     bitmapTemp1 = Align.face_align(bitmapTemp1, box1.landmark);
     boxes1 = mtcnn.detectFaces(bitmapTemp1, bitmapTemp1.getWidth() / 5);
+
+    if (boxes1.size() == 0) {
+      this.error = true;
+      this.message = "Tidak ada wajah yang terdeteksi";
+      this.response();
+      return;
+    }
+
     box1 = boxes1.get(0);
     box1.toSquareShape();
     box1.limitSquare(bitmapTemp1.getWidth(), bitmapTemp1.getHeight());
@@ -75,15 +85,21 @@ public class FaceSpoofingProcess extends Activity {
 
     if (laplace2 < FaceAntiSpoofing.LAPLACIAN_THRESHOLD) {
       this.error = false;
-      this.liveness = "False " + laplace2 + " < " + FaceAntiSpoofing.LAPLACIAN_THRESHOLD;
+      this.score = "" + laplace2;
+      this.threshold = "" + FaceAntiSpoofing.LAPLACIAN_THRESHOLD;
+      this.liveness = "False";
     } else {
       float score2 = fas.antiSpoofing(bitmapCrop1);
       if (score2 < FaceAntiSpoofing.THRESHOLD) {
         this.error = false;
-        this.liveness = "True " + score2 + " < " + FaceAntiSpoofing.THRESHOLD;
+        this.score = "" + score2;
+        this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
+        this.liveness = "True";
       } else {
         this.error = false;
-        this.liveness = "False " + score2 + " < " + FaceAntiSpoofing.THRESHOLD;
+        this.score = "" + score2;
+        this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
+        this.liveness = "False";
       }
     }
 
@@ -94,6 +110,8 @@ public class FaceSpoofingProcess extends Activity {
     JSONObject obj = new JSONObject();
     try {
       obj.put("error", this.error);
+      obj.put("score", this.score);
+      obj.put("threshold", this.threshold);
       obj.put("liveness", this.liveness);
       obj.put("message", this.message);
     } catch (JSONException e) {
@@ -106,7 +124,5 @@ public class FaceSpoofingProcess extends Activity {
     setResult(RESULT_OK, data);
     finish();
   }
-
-
 
 }
