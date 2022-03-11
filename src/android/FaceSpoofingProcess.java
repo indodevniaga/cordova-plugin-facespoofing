@@ -49,7 +49,7 @@ public class FaceSpoofingProcess extends Activity {
   private void antiSpoofing(Bitmap mBitmap) {
     if (mBitmap == null) {
       this.error = true;
-      this.message = "Harap deteksi wajah terlebih dahulu";
+      this.message = "Please detect face first";
       this.response();
       return;
     }
@@ -59,7 +59,7 @@ public class FaceSpoofingProcess extends Activity {
 
     if (boxes1.size() == 0) {
       this.error = true;
-      this.message = "Tidak ada wajah yang terdeteksi";
+      this.message = "No faces detected";
       this.response();
       return;
     }
@@ -70,7 +70,7 @@ public class FaceSpoofingProcess extends Activity {
 
     if (boxes1.size() == 0) {
       this.error = true;
-      this.message = "Tidak ada wajah yang terdeteksi";
+      this.message = "No faces detected";
       this.response();
       return;
     }
@@ -88,6 +88,7 @@ public class FaceSpoofingProcess extends Activity {
       this.score = "" + laplace2;
       this.threshold = "" + FaceAntiSpoofing.LAPLACIAN_THRESHOLD;
       this.liveness = false;
+      this.message = "";
     } else {
       float score2 = fas.antiSpoofing(bitmapCrop1);
       if (score2 < FaceAntiSpoofing.THRESHOLD) {
@@ -95,17 +96,19 @@ public class FaceSpoofingProcess extends Activity {
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
         this.liveness = true;
+        this.message = "";
       } else {
         this.error = false;
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
         this.liveness = false;
+        this.message = "Sorry, we can't find a face or indicate that the photo is real.";
       }
     }
 
     this.response();
   }
-
+  
   private void response() {
     JSONObject obj = new JSONObject();
     try {
