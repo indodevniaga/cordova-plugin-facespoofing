@@ -12,10 +12,10 @@
                 <param name="android-package" value="cordova.plugin.facespoofing.FaceSpoofing" />
             </feature>
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
             <activity android:launchMode="singleTop" android:name="cordova.plugin.facespoofing.FaceSpoofingProcess" />
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="src/android/FaceSpoofing.java" target-dir="src/cordova/plugin/facespoofing" />
         <source-file src="src/android/FaceSpoofingProcess.java" target-dir="src/cordova/plugin/facespoofing" />
         <source-file src="src/android/FaceAntiSpoofing.java" target-dir="src/cordova/plugin/facespoofing" />
@@ -28,11 +28,15 @@
         <resource-file src="files/onet.tflite" target="assets/onet.tflite" />
         <resource-file src="files/pnet.tflite" target="assets/pnet.tflite" />
         <resource-file src="files/rnet.tflite" target="assets/rnet.tflite" />
-         <!-- Instalasi Gradle -->
-        <framework
-            custom="true"
-            src="src/android/build-extras.gradle"
-            type="gradleReference" />
-        <hook type="after_prepare" src="scripts/apply-to-gradle.properties.js" />
+        <framework custom="true" src="src/android/build-extras.gradle" type="gradleReference" />
+        <hook src="scripts/apply-to-gradle.properties.js" type="after_prepare" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="FaceSpoofing">
+                <param name="ios-package" value="FaceSpoofing" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/FaceSpoofing.m" />
     </platform>
 </plugin>
