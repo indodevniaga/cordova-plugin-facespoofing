@@ -57,6 +57,9 @@
             <pods use-frameworks="true">
                 <pod name="TensorFlowLiteObjC" />
             </pods>
+            <pods use-frameworks="true">
+                <pod name="TensorFlowLiteC" />
+            </pods>
         </podspec>
     </platform>
 </plugin>
