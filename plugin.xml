@@ -50,5 +50,6 @@
         <source-file src="src/ios/rnet.tflite" />
         <source-file src="src/ios/Tools.h" />
         <source-file src="src/ios/Tools.m" />
+        <framework src="TensorFlowLiteObjC" type="podspec" />
     </platform>
 </plugin>
