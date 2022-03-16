@@ -50,6 +50,13 @@
         <source-file src="src/ios/rnet.tflite" />
         <source-file src="src/ios/Tools.h" />
         <source-file src="src/ios/Tools.m" />
-        <framework src="TensorFlowLiteObjC" type="podspec" />
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="TensorFlowLiteObjC" />
+            </pods>
+        </podspec>
     </platform>
 </plugin>
