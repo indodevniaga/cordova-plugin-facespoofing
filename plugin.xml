@@ -38,5 +38,17 @@
             </feature>
         </config-file>
         <source-file src="src/ios/FaceSpoofing.m" />
+        <source-file src="src/ios/Box.h" />
+        <source-file src="src/ios/Box.m" />
+        <source-file src="src/ios/FaceAntiSpoofing.h" />
+        <source-file src="src/ios/FaceAntiSpoofing.mm" />
+        <source-file src="src/ios/FaceAntiSpoofing.tflite" />
+        <source-file src="src/ios/MTCNN.h" />
+        <source-file src="src/ios/MTCNN.mm" />
+        <source-file src="src/ios/onet.tflite" />
+        <source-file src="src/ios/pnet.tflite" />
+        <source-file src="src/ios/rnet.tflite" />
+        <source-file src="src/ios/Tools.h" />
+        <source-file src="src/ios/Tools.m" />
     </platform>
 </plugin>
