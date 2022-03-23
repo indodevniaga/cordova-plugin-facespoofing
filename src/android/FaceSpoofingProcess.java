@@ -7,10 +7,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -33,7 +36,8 @@ public class FaceSpoofingProcess extends Activity {
     super.onCreate(savedInstanceState);
     Bundle data = getIntent().getExtras();
     String images = data.getString("image", "");
-    byte[] decodedString = Base64.decode(images, Base64.DEFAULT);
+
+    byte[] decodedString = Base64.decode(getBase64FromPath(images), Base64.DEFAULT);
     Bitmap mBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
     try {
@@ -46,7 +50,24 @@ public class FaceSpoofingProcess extends Activity {
     this.antiSpoofing(mBitmap);
   }
 
+  public static String getBase64FromPath(String path) {
+    String base64 = "";
+    try {
+      File file = new File(path);
+      byte[] buffer = new byte[(int) file.length() + 100];
+      @SuppressWarnings("resource")
+      int length = new FileInputStream(file).read(buffer);
+      base64 = Base64.encodeToString(buffer, 0, length,
+        Base64.DEFAULT);
+    } catch (IOException e) {
+      Log.d("Log", "" + e.getMessage());
+      e.printStackTrace();
+    }
+    return base64;
+  }
+
   private void antiSpoofing(Bitmap mBitmap) {
+
     if (mBitmap == null) {
       this.error = true;
       this.message = "Please detect face first";
@@ -108,7 +129,7 @@ public class FaceSpoofingProcess extends Activity {
 
     this.response();
   }
-  
+
   private void response() {
     JSONObject obj = new JSONObject();
     try {
