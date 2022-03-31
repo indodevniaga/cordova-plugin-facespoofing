@@ -76,7 +76,7 @@ public class FaceSpoofingProcess extends Activity {
     }
 
     Bitmap bitmapTemp1 = mBitmap.copy(mBitmap.getConfig(), false);
-    Vector<Box> boxes1 = mtcnn.detectFaces(bitmapTemp1, bitmapTemp1.getWidth() / 5);
+    Vector<Box> boxes1 = mtcnn.detectFaces(bitmapTemp1, bitmapTemp1.getWidth() / 8);
 
     if (boxes1.size() == 0) {
       this.error = true;
@@ -87,7 +87,7 @@ public class FaceSpoofingProcess extends Activity {
 
     Box box1 = boxes1.get(0);
     bitmapTemp1 = Align.face_align(bitmapTemp1, box1.landmark);
-    boxes1 = mtcnn.detectFaces(bitmapTemp1, bitmapTemp1.getWidth() / 5);
+    boxes1 = mtcnn.detectFaces(bitmapTemp1, bitmapTemp1.getWidth() / 8);
 
     if (boxes1.size() == 0) {
       this.error = true;
